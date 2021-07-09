@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(${PROJECT_NAME} 
 # src/ViconDataStreamSDK_CPPTest.cpp
 # src/vicon_simple.cpp
-src/vicon_simple_clean.cpp
+ src/vicon_simple_clean.cpp
 )
 
 target_include_directories(${PROJECT_NAME}  PUBLIC include)

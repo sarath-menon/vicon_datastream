@@ -222,7 +222,7 @@ int main(int argc, char *argv[]) {
 
   // For handheld AR - Not relevant
   bool EnableHapticTest = false;
-  bool bReadCentroids = false;
+  bool bReadCentroids = true;
   bool bReadRayData = false;
   bool bReadGreyscaleData = false;
   bool bReadVideoData = false;
