@@ -5,7 +5,7 @@ target_include_directories(vicon_datastreamer_original PRIVATE src)
 target_include_directories(vicon_datastreamer_original  PRIVATE lib)
 
 target_link_libraries(vicon_datastreamer_original  
-ViconDataStreamSDK_CPP
+ViconDataStreamSDK_lib
 )
 
 target_include_directories(vicon_datastreamer_original PUBLIC include)
@@ -17,7 +17,7 @@ target_include_directories(vicon_datastreamer_commented PRIVATE src)
 target_include_directories(vicon_datastreamer_commented PRIVATE lib)
 
 target_link_libraries(vicon_datastreamer_commented
-ViconDataStreamSDK_CPP
+ViconDataStreamSDK_lib
 )
 
 target_include_directories(vicon_datastreamer_commented PUBLIC include)
@@ -29,7 +29,7 @@ target_include_directories(vicon_datastreamer_cleaned PRIVATE src)
 target_include_directories(vicon_datastreamer_cleaned PRIVATE lib)
 
 target_link_libraries(vicon_datastreamer_cleaned
-ViconDataStreamSDK_CPP
+ViconDataStreamSDK_lib
 )
 
 target_include_directories(vicon_datastreamer_cleaned PUBLIC include)

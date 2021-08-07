@@ -15,7 +15,7 @@ add_definitions(
 )
 
 # Declare a cpp library
-add_library(ViconDataStreamSDK_CPP
+add_library(ViconDataStreamSDK_lib
   Vicon/CrossMarket/DataStream/ViconDataStreamSDKCore/CoreClient.cpp
   Vicon/CrossMarket/DataStream/ViconDataStreamSDKCore/CoreClientTimingLog.cpp
   Vicon/CrossMarket/DataStream/ViconDataStreamSDKCoreUtils/ClientUtils.cpp
@@ -28,11 +28,16 @@ add_library(ViconDataStreamSDK_CPP
   Vicon/CrossMarket/DataStream/ViconDataStreamSDK_CPP/DataStreamClient.cpp
 )
 
-target_link_libraries(ViconDataStreamSDK_CPP
+target_link_libraries(ViconDataStreamSDK_lib
   PRIVATE 
     Boost::system
     Boost::thread
     Threads::Threads
+)
+
+target_include_directories(ViconDataStreamSDK_lib PUBLIC
+Vicon/CrossMarket/DataStream
+Vicon/CrossMarket/include
 )
 
 add_subdirectory(vicon_datastream_app)
