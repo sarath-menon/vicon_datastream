@@ -2,26 +2,45 @@ cmake_minimum_required(VERSION 3.20.0)
 project(vicon_test VERSION 1.0)
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(vicon_datastreamer_original src/ViconDataStreamSDK_CPPTest.cpp)
-target_include_directories(vicon_datastreamer_original PUBLIC include)
-target_include_directories(vicon_datastreamer_original PRIVATE src)
-target_include_directories(vicon_datastreamer_original  PRIVATE lib)
-target_link_libraries(vicon_datastreamer_original  "${CMAKE_CURRENT_LIST_DIR}/lib/libViconDataStreamSDK_CPP.dylib")
+find_package(Boost 1.5 COMPONENTS system thread REQUIRED)
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
 
+include_directories(
+  Vicon/CrossMarket/DataStream
+  Vicon/CrossMarket
+)
+add_definitions(
+  -D_EXPORTING
+)
 
-add_executable(vicon_datastreamer_commented src/vicon_commented.cpp)
-target_include_directories(vicon_datastreamer_commented PUBLIC include)
-target_include_directories(vicon_datastreamer_commented PRIVATE src)
-target_include_directories(vicon_datastreamer_commented PRIVATE lib)
-target_link_libraries(vicon_datastreamer_commented  "${CMAKE_CURRENT_LIST_DIR}/lib/libViconDataStreamSDK_CPP.dylib")
+# Declare a cpp library
+add_library(ViconDataStreamSDK_CPP
+  Vicon/CrossMarket/DataStream/ViconDataStreamSDKCore/CoreClient.cpp
+  Vicon/CrossMarket/DataStream/ViconDataStreamSDKCore/CoreClientTimingLog.cpp
+  Vicon/CrossMarket/DataStream/ViconDataStreamSDKCoreUtils/ClientUtils.cpp
+  Vicon/CrossMarket/DataStream/ViconDataStreamSDKCoreUtils/AxisMapping.cpp
+  Vicon/CrossMarket/DataStream/ViconDataStreamSDKCore/WirelessConfiguration.cpp
+  Vicon/CrossMarket/DataStream/ViconCGStreamClientSDK/CGClient.cpp
+  Vicon/CrossMarket/DataStream/ViconCGStreamClient/ViconCGStreamClient.cpp
+  Vicon/CrossMarket/DataStream/ViconCGStreamClient/CGStreamReaderWriter.cpp
+  Vicon/CrossMarket/DataStream/ViconCGStreamClient/ViconCGStreamBayer.cpp
+  Vicon/CrossMarket/DataStream/ViconDataStreamSDK_CPP/DataStreamClient.cpp
+  # StreamCommon
+  # ViconCGStream
+  # ViconCGStreamClient
+  # ViconCGStreamClientSDK
+  # ViconDataStreamSDKCore
+)
 
-add_executable(vicon_datastreamer_cleaned src/vicon_cleaned.cpp)
-target_include_directories(vicon_datastreamer_cleaned PUBLIC include)
-target_include_directories(vicon_datastreamer_cleaned PRIVATE src)
-target_include_directories(vicon_datastreamer_cleaned PRIVATE lib)
-target_link_libraries(vicon_datastreamer_cleaned  "${CMAKE_CURRENT_LIST_DIR}/lib/libViconDataStreamSDK_CPP.dylib")
+target_link_libraries(ViconDataStreamSDK_CPP
+  PRIVATE 
+    Boost::system
+    Boost::thread
+    Threads::Threads
+)
 
-
+add_subdirectory(app)
 
 
 
