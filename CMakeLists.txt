@@ -26,11 +26,6 @@ add_library(ViconDataStreamSDK_CPP
   Vicon/CrossMarket/DataStream/ViconCGStreamClient/CGStreamReaderWriter.cpp
   Vicon/CrossMarket/DataStream/ViconCGStreamClient/ViconCGStreamBayer.cpp
   Vicon/CrossMarket/DataStream/ViconDataStreamSDK_CPP/DataStreamClient.cpp
-  # StreamCommon
-  # ViconCGStream
-  # ViconCGStreamClient
-  # ViconCGStreamClientSDK
-  # ViconDataStreamSDKCore
 )
 
 target_link_libraries(ViconDataStreamSDK_CPP
@@ -40,7 +35,7 @@ target_link_libraries(ViconDataStreamSDK_CPP
     Threads::Threads
 )
 
-add_subdirectory(app)
+add_subdirectory(vicon_datastream_app)
 
 
 
