@@ -1,5 +1,5 @@
 # vicon-datastream-sdk
-inofficial VICON DataStream SDK with cmake support
+Unofficial VICON DataStream SDK with cmake support
 
 Can be compiled on mac,windows and ubuntu. No dynamic linking (unlike the official sdk)
 
